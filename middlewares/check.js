@@ -1,16 +1,16 @@
 module.exports = {
     checkLogin: function checkLogin(req,res,next){
-        // if(!req.session.user){
-        //     req.flash('error','‚Ü‚¾“o˜^‚µ‚Ä‚¢‚È‚¢');
-        //     return res.redirect('/signin');
-        // }
+        if(!req.session.user){
+            req.flash('error','è¯·ç™»é™†');
+            return res.redirect('/signin');
+        }
         next();
     },
     checkNotLogin: function checkNotLogin(req,res,next){
-        // if(req.session.user){
-        //     req.flash('error','‚à‚¤“o˜^Ï‚İ');
-        //     return res.redirect('back');
-        // }
+        if(req.session.user){
+            req.flash('error','å·²ç»ç™»é™†');
+            return res.redirect('/stock');
+        }
         next();
     }
 };

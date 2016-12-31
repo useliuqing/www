@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+<div class="container">
+    <div class="col-xs-2">
+    </div>
+    <div class="col-xs-8">
+        <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">GO</button>
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-2">
+    </div>
+</div>
+<div class = "container">
+    <table class="table table-striped">
+        <thead> 
+            <tr>
+                <% viewableInfos.forEach(function(viewableInfo){ %>
+                <th><%= viewableInfo.infoText%></th>
+                <%})%>
+            </tr>
+        </thead>
+
+    </table>
+
+</div>
+
+
+
+<%- include('footer') %>
