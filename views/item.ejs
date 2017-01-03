@@ -1,0 +1,61 @@
+<%- include('header') %>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/stock">主页</a></li>
+            <li><a href="/stock">商品注册</a></li>
+        </ol>
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading well" id="itemPlusHead">
+                <h3 class="panel-title">
+                    <button class="btn btn-success" onclick="product.item.setNewProduct()">
+                        <span class="glyphicon glyphicon-plus">注册新商品</span>
+                    </button>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <h3>商品信息</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>商品ID</th>
+                            <th>商品图片</th>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>种类</th>
+                            <th>供应商</th>
+                            <th>采购价</th>
+                            <th>产地</th>
+                            <th>更新时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% items.forEach(function(item){  %>
+                            <tr>
+                                <td><%= item.itemID %></td>
+                                <td><img src="/img/<%= item.picture[0] %>" class="img-rounded" ></td>
+                                <td><%= item.name %></td>
+                                <td><%= item.price %></td>
+                                <td><%= item.kind %></td>
+                                <td><%= item.supplier %></td>
+                                <td><%= item.procurementPrice %></td>
+                                <td><%= item.producingArea %></td>
+                                <td><%= item.lastUpdateTime %></td>
+                                <td>
+                                    <button class="btn btn-info">编辑</button>
+                                    <button class="btn btn-danger">删除</button>
+                                </td>
+                            </tr>
+                        <% }) %>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+<%- include('footer') %>

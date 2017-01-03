@@ -1,13 +1,20 @@
 <%- include('header') %>
-
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/stock">home</a></li>
+    </ol>
+</div>
 <div class="container">
     <div class="col-xs-2">
+        <button class="btn btn-primary btn-sm" onclick="product.setViewableInfo()">
+            显示项目
+        </button>
     </div>
     <div class="col-xs-8">
         <div class="input-group">
             <input type="text" class="form-control">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button">GO</button>
+                <button class="btn btn-default" type="button" onclick="">GO</button>
             </span>
         </div>
     </div>
@@ -15,16 +22,19 @@
     </div>
 </div>
 <div class = "container">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
     <table class="table table-striped">
         <thead> 
             <tr>
                 <% viewableInfos.forEach(function(viewableInfo){ %>
-                <th><%= viewableInfo.infoText%></th>
+                <th><%= viewableInfo.infoText %></th>
                 <%})%>
             </tr>
         </thead>
 
     </table>
+    </div>
 
 </div>
 

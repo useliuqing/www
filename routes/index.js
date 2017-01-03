@@ -3,4 +3,6 @@ module.exports = function(app){
     app.use('/signup',require('./signup'));
     app.use('/posts',require('./posts'));
     app.use('/stock',require('./stock'));
+    app.use('/setViewableInfo',require('./setViewableInfo'));
+    app.use('/item',require('./item'));
 }
