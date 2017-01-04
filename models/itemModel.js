@@ -5,9 +5,9 @@ module.exports = {
         return Item.create(items).exec();
     },
     getItems : function(userName){
-        return Item.find({naem : userName}).exec();
+        return Item.find({userName : userName}).exec();
     },
     getMaxItemID : function(userName){
-        return Item.find({name : userName}).sort({itemID : -1}).limit(1).select({itemID : 1}).exec();
+        return Item.find({userName : userName}).sort({itemID : -1}).limit(1).select({itemID : 1}).exec();
     }
 };

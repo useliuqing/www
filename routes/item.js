@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var path = require('path');
+var moment = require('moment');
 var checkLogin = require('../middlewares/check').checkLogin;
 var ItemModel = require('../models/itemModel');
 //商品编辑页面
@@ -28,10 +29,10 @@ router.post('/', function (req, res, next) {
                 item.supplier = fields['supplier' + i];
                 item.procurementPrice =parseFloat(fields['procurementPrice' + i]);
                 item.producingArea = fields['producingArea' + i];
-                item.lastUpdateTime = new Date();
+                item.lastUpdateTime = moment().format();
                 item.userName = req.session.user.name;
                 if (req.files['picture' + i] == null) {
-                    item.picture = null;
+                    item.picture = '';
                 } else {
                     item.picture = req.files['picture' + i].path.split(path.sep).pop();
                 }
