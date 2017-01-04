@@ -35,8 +35,12 @@
                         <% items.forEach(function(item){  %>
                             <tr>
                                 <td><%= item.itemID %></td>
+                                <% if(item.picture){%>
                                 <td><img src="/img/<%= item.picture[0] %>" class="img-rounded" ></td>
-                                <td><%= item.name %></td>
+                                <% }else{ %>
+                                <td><img class="img-rounded" ></td>
+                                <% }%>
+                                <td><%= item.productName %></td>
                                 <td><%= item.price %></td>
                                 <td><%= item.kind %></td>
                                 <td><%= item.supplier %></td>

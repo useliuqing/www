@@ -9,6 +9,12 @@ router.get('/',checkNotLogin,function(req,res,next){
     res.render('signin');
 });
 
+//�ޏo�o?
+router.get('/signout',function(req,res,next){
+    req.session.user = null;
+    res.render('signin');
+})
+
 router.post('/',checkNotLogin,function(req,res,next){
     var name = req.fields.name;
     var password = req.fields.password;
@@ -19,14 +25,14 @@ router.post('/',checkNotLogin,function(req,res,next){
                      req.flash('error','用户不存在');
                      return res.redirect('back');
                  }
-                 //检查密码
+                 //检查��?��?
                  if(sha1(password) !== user.password){
-                     req.flash('error','用户名或者密码错误');
+                     req.flash('error','用户名�?���?��?��?错误');
                      return res.redirect('back');
                  }
-                 //登录成功
-                 req.flash('success','登录成功');
-                 //用户信息写入session
+                 //登录�?�功
+                 req.flash('success','登录�?�功');
+                 //用户信息写�?�session
                  delete user.password;
                  req.session.user = user;
                  res.redirect('/stock');

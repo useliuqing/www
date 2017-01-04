@@ -49,10 +49,10 @@ var product = (function ($) {
                 .append('<td><input type="file" name="picture' + newProductsNumber + '"></td>')
                 .append('<td><input type="text" name="productName'+ newProductsNumber +'"></td>')
                 .append('<td><input type="text" name="price' + newProductsNumber +'"></td>')
-                .append('<td><input type="text" name="kind"></td>')
-                .append('<td><input type="text" name="supplier"></td>')
-                .append('<td><input type="text" name="procurementPrice"></td>')
-                .append('<td><input type="text" name="producingArea"></td>')
+                .append('<td><input type="text" name="kind' + newProductsNumber + '"></td>')
+                .append('<td><input type="text" name="supplier' + newProductsNumber+ '"></td>')
+                .append('<td><input type="text" name="procurementPrice' + newProductsNumber+ '"></td>')
+                .append('<td><input type="text" name="producingArea' + newProductsNumber + '"></td>')
                 .append('<td><span class="glyphicon glyphicon-plus" onclick="product.item.addProduct()"></span></td>')
                 .find('input').css('width', 100);
             jdiv.appendTo('#itemPlusHead');
@@ -103,6 +103,5 @@ var product = (function ($) {
         newProductsNumber++;
         $(event.target).parent().empty().parent().after(jtr);
     }
-
     return p;
 } (jQuery));
