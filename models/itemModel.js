@@ -7,7 +7,7 @@ module.exports = {
     getItems : function(userName){
         return Item.find({userName : userName}).exec();
     },
-    getMaxItemID : function(userName){
+    getMaxID : function(userName){
         return Item.find({userName : userName}).sort({itemID : -1}).limit(1).select({itemID : 1}).exec();
     }
 };
