@@ -1,10 +1,12 @@
 var product = (function ($) {
 
+    var xmlhttp;
     var p = {};
     //主页面相关
     p.stock = {
         //设置主页的显示项目
-        setViewableInfo: setViewableInfo
+        setViewableInfo: setViewableInfo,
+        ajaxLoad: ajaxLoad
 
     };
 
@@ -119,13 +121,13 @@ var product = (function ($) {
         var jtr = jtrClone.clone();
         if (newProductsNumber >= 11) {
             //已经添加了两位数的商品了
-            jtr.find('td').each(function(i,td){
-                _setNameAttr(i,td,1,'item');
+            jtr.find('td').each(function (i, td) {
+                _setNameAttr(i, td, 1, 'item');
             });
         } else {
             //已经添加了0-9个商品
-            jtr.find('td').each(function(i,td){
-                _setNameAttr(i,td,0,'item');
+            jtr.find('td').each(function (i, td) {
+                _setNameAttr(i, td, 0, 'item');
             });
         }
         $(event.target).parent().empty().parent().after(jtr);
@@ -195,30 +197,64 @@ var product = (function ($) {
         var jtr = kindJtrClone.clone();
         if (newKindsNumber >= 11) {
             //已经添加了两位数的商品了
-            jtr.find('td').each(function(i,bd){
-                _setNameAttr(i,bd,1,'kind');
+            jtr.find('td').each(function (i, bd) {
+                _setNameAttr(i, bd, 1, 'kind');
             });
         } else {
             //已经添加了0-9个商品
-            jtr.find('td').each(function(i,bd){
-                _setNameAttr(i,bd,0,'kind');
+            jtr.find('td').each(function (i, bd) {
+                _setNameAttr(i, bd, 0, 'kind');
             });
         }
         $(event.target).parent().empty().parent().after(jtr);
     }
 
     /** 
+     * private
      * number : 已经添加了两位数的商品的时候传入１，一位数商品的时候传入０
      * flag   :注册新商品: item　注册新种类:kind
      */
-    function _setNameAttr(index, td, number,flag) {
+    function _setNameAttr(index, td, number, flag) {
         var name = "";
-        if('item' == flag){
+        if ('item' == flag) {
             name = td.children[0].name.substring(0, name.length - number) + newProductsNumber;
-        }else if('kind' == flag){
+        } else if ('kind' == flag) {
             name = td.children[0].name.substring(0, name.length - number) + newKindsNumber;
         }
         td.children[0].name = name;
+    }
+    /**
+     * targetData :  1 'stock' : 取库存  2 'soldOut' : 取已售出 3'delivered' : 取已出货 
+     */
+    function ajaxLoad(targetData) {
+        if (!xmlhttp) {
+            _setXmlHttp();
+        }
+         
+        xmlhttp.open("GET",　'stock?load=' + targetData + "&t=" + Math.random(),true);
+        xmlhttp.send();
+    }
+
+    function _setXmlHttp() {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        if(xmlhttp != null){
+            xmlhttp.onreadystatechange = _onResponse;
+        }
+    }
+
+    function _onResponse(){
+        if(xmlhttp.readyState!= 4)return;
+        if(xmlhttp.status != 200){
+            //读取数据出错
+
+        }
+
+
+
     }
 
 

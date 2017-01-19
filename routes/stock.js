@@ -4,12 +4,12 @@ var ViewableInfo = require('../models/viewable');
 var router = express.Router();
 
 var checkLogin = require('../middlewares/check').checkLogin;
-
+const pageID = 0;
 router.get('/',checkLogin,function(req,res,next){
     var user = req.session.user;
-
+    var load = req.query.load;
     Promise.all([
-        ViewableInfo.getViewableInfo(user.name,0),//pageID = 0代表商品库存页面
+        ViewableInfo.getViewableInfo(user.name,pageID),
         StockInfo.getStockInfo(user.name)
     ]).then(function(results){
         res.render('stock',{

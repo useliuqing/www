@@ -6,7 +6,7 @@ router.get('/',checkLogin,function(req,res,next){
     Promise.all([
         SupplierModel.getKinds()
     ]).then(function(results){
-        res.render('kind',{
+        res.render('',{
             kinds : results[0]
         })
     })
