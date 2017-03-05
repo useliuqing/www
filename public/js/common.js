@@ -6,7 +6,8 @@ var product = (function ($) {
     p.stock = {
         //设置主页的显示项目
         setViewableInfo: setViewableInfo,
-        ajaxLoad: ajaxLoad
+        ajaxLoad: ajaxLoad,
+        purchase : _purchase
 
     };
 

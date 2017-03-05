@@ -9,15 +9,15 @@ router.get('/',checkNotLogin,function(req,res,next){
     res.render('signin');
 });
 
-//�ޏo�o?
+//用户退出登陆
 router.get('/signout',function(req,res,next){
     req.session.user = null;
     res.render('signin');
 })
 
 router.post('/',checkNotLogin,function(req,res,next){
-    var name = req.fields.name;
-    var password = req.fields.password;
+    var name = req.body.name;
+    var password = req.body.password;
 
     UserModel.getUserByName(name)
              .then(function(user){
