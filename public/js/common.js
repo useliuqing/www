@@ -7,7 +7,7 @@ var product = (function ($) {
         //设置主页的显示项目
         setViewableInfo: setViewableInfo,
         ajaxLoad: ajaxLoad,
-        purchase : _purchase
+        purchase : purchase
 
     };
 
@@ -36,6 +36,13 @@ var product = (function ($) {
     function setViewableInfo() {
         window.location.href = "/setViewableInfo";
     }
+
+    function purchase(){
+        window.open("/purchase","_blank",
+        "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400");
+    }
+
+
 
     var jtrClone = {};
     var newProductsNumber = 1;

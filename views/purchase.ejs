@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%=blog.title %></title>
+        <link rel ="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="/lib/bootstrap.js"></script>
+        <script src="/js/common.js"></script>
+    </head>
+    <body>
+        <div class="panel-body">
+            <form class="bs-example bs-example-form" role="form">
+                <h3>商品种类</h3>
+                <select name="" id="" class="form-control">
+                    <option value="0">ALL</option>
+                    <% kinds.forEach(function(kind){  %>
+                    <option value=kind.kindID><%= kind.name %></option>
+                    <% }) %>
+                </select>
+                <h3>商品名</h3>
+                <select name="" id="">
+                    <% items.forEach(function(item){  %>
+                        <option value="item.itemID"><%= item.name %></option>
+                    <% }) %>
+                </select>
+                <h3>数量</h3>
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="0">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                <br>
+            </form>
+        </div>
+    </body>
+</html>

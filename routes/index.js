@@ -7,4 +7,5 @@ module.exports = function(app){
     app.use('/item',require('./item'));
     app.use('/kind',require('./kind'));
     app.use('/supplier',require('./supplier'));
+    app.use('/purchase',require('./purchase'));
 }
