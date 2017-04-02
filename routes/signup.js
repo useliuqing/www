@@ -16,7 +16,7 @@ router.post('/', checkNotLogin, upload.single('avatar'), function (req, res, nex
     var name = req.body.name;
     var gender = req.body.gender;
     var bio = req.body.bio;
-    var avatar = req.files;
+    var avatar = req.file;
     var password = req.body.password;
     var repassword = req.body.repassword;
 
@@ -66,11 +66,11 @@ router.post('/', checkNotLogin, upload.single('avatar'), function (req, res, nex
             user = result.ops[0];
             //将用户信息存入session
             delete user.password;
-            req.session.user = user;
+            //req.session.user = user;
             //写入flash
             req.flash('success', '注册成功');
             //跳转首页
-            res.redirect('/posts');
+            res.redirect('/signin');
         }).catch(function (e){
             //注册失败，异步删除上传的头像
             // fs.unlink(req.files.avatar.path);

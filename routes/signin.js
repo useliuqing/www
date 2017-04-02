@@ -23,9 +23,9 @@ router.post('/',checkNotLogin,function(req,res,next){
              .then(function(user){
                  if(!user){
                      req.flash('error','用户不存在');
-                     return res.redirect('back');
+                     return res.redirect('/signin');
                  }
-                 //检查��?��?
+                 //检查用户密码
                  if(sha1(password) !== user.password){
                      req.flash('error','用户名�?���?��?��?错误');
                      return res.redirect('back');

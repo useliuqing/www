@@ -7,7 +7,7 @@ var product = (function ($) {
         //设置主页的显示项目
         setViewableInfo: setViewableInfo,
         ajaxLoad: ajaxLoad,
-        purchase : purchase
+        purchase: purchase
 
     };
 
@@ -31,16 +31,66 @@ var product = (function ($) {
 
     }
 
+    p.purchase = {
+
+        //改变商品种类
+        changeKind: changeKind,
+        addItem   : addItem
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function changeKind() {
+        var kindID = $("#kindSelect").val();
+        $("#itemSelect").find("option").get().forEach(function (option) {
+            if (option.dataset.kindID != kindID) {
+                option.style.display = "none";
+            }
+        })
+        var itemSelect = $("#itemSelect");
+    }
+
+    function addItem(){
+        var jItemNum = $(event.target).parent().prev()
+        jItemNum.val(jItemNum.val() + 1);
+    }
+
+
 
     function setViewableInfo() {
         window.location.href = "/setViewableInfo";
     }
 
-    function purchase(){
-        window.open("/purchase","_blank",
-        "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400");
+    function purchase() {
+        window.open("/purchase", "_blank",
+            "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400");
     }
+
+
+
+
+
 
 
 
@@ -238,8 +288,8 @@ var product = (function ($) {
         if (!xmlhttp) {
             _setXmlHttp();
         }
-         
-        xmlhttp.open("GET",　'stock?load=' + targetData + "&t=" + Math.random(),true);
+
+        xmlhttp.open("GET", 'stock?load=' + targetData + "&t=" + Math.random(), true);
         xmlhttp.send();
     }
 
@@ -249,14 +299,14 @@ var product = (function ($) {
         } else if (window.ActiveXObject) {
             xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
         }
-        if(xmlhttp != null){
+        if (xmlhttp != null) {
             xmlhttp.onreadystatechange = _onResponse;
         }
     }
 
-    function _onResponse(){
-        if(xmlhttp.readyState!= 4)return;
-        if(xmlhttp.status != 200){
+    function _onResponse() {
+        if (xmlhttp.readyState != 4) return;
+        if (xmlhttp.status != 200) {
             //读取数据出错
 
         }
@@ -267,4 +317,4 @@ var product = (function ($) {
 
 
     return p;
-} (jQuery));
+}(jQuery));

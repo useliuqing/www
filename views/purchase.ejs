@@ -14,16 +14,18 @@
         <div class="panel-body">
             <form class="bs-example bs-example-form" role="form">
                 <h3>商品种类</h3>
-                <select name="" id="" class="form-control">
+                <select name="kinds" id="kindSelect" class="form-control" onchange="product.purchase.changeKind()">
                     <option value="0">ALL</option>
+                    <option value="1">haoba</option>
                     <% kinds.forEach(function(kind){  %>
                     <option value=kind.kindID><%= kind.name %></option>
                     <% }) %>
                 </select>
                 <h3>商品名</h3>
-                <select name="" id="">
+                <select name="items" id="itemSelect" class="form-control">
+                    <option value="0">请选择商品</option>
                     <% items.forEach(function(item){  %>
-                        <option value="item.itemID"><%= item.name %></option>
+                        <option value="item.itemID" data-kindID="item.kind" ><%= item.name %></option>
                     <% }) %>
                 </select>
                 <h3>数量</h3>
@@ -31,7 +33,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="0">
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button">
+                            <button class="btn btn-success" type="button" onclick="product.purchase.addItem()">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </span>
