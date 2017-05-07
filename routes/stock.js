@@ -5,6 +5,7 @@ var router = express.Router();
 
 var checkLogin = require('../middlewares/check').checkLogin;
 const pageID = 0;
+
 router.get('/',checkLogin,function(req,res,next){
     var user = req.session.user;
     var load = req.query.load;
@@ -19,5 +20,19 @@ router.get('/',checkLogin,function(req,res,next){
     }).catch(next);
 
 });
+
+router.get("/stock?load=",checkLogin,function(req,res,next){
+    var key = req.param("load");
+    if(key != "stock" && key!= "soldOut" && key!="delivered"){
+        res.end();
+    }
+    var data = getViewableDataOfJSON(key);
+    
+})
+
+function getViewableDataOfJSON(){
+    StockInfo.getStockInfo(user.name)
+}
+
 
 module.exports = router;

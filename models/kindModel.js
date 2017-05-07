@@ -2,7 +2,7 @@ var Kind = require('../lib/mongo').Kind;
 
 module.exports = {
     create : function(kinds){
-        return Kind.create(items).exec();
+        return Kind.create(kinds).exec();
     },
     getKinds : function(userName){
         return Kind.find({userName : userName}).exec();

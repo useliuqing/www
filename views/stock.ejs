@@ -5,18 +5,18 @@
         </ol>
     </div>
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active" onclick="product.stock.ajaxLoad('stock')"><a href="#">库存</a></li>
-        <li role="presentation" onclick="product.stock.ajaxLoad('soldOut')"><a href="#">已售出</a></li>
-        <li role="presentation" onclick="product.stock.ajaxLoad('delivered')"><a href="#">已出货</a></li>
+        <li role="presentation" class="active" id="stock" onclick="Product.Stock.ajaxLoad('stock')"><a href="#">库存</a></li>
+        <li role="presentation" id= "soldOut" onclick="Product.Stock.ajaxLoad('soldOut')"><a href="#">已售出</a></li>
+        <li role="presentation" id="delivered" onclick="Product.Stock.ajaxLoad('delivered')"><a href="#">已出货</a></li>
     </ul>
 
     <div class="container">
         <div class<div class="container">
             <div class="col-xs-3">
-                <button class="btn btn-primary btn-sm" onclick="product.stock.setViewableInfo()">
+                <button class="btn btn-primary btn-sm" id="setViewableInfo" onclick="Product.Stock.setViewableInfo()">
                     显示项目
                  </button>
-                <button class="btn btn-primary" onclick="product.stock.purchase()">
+                <button class="btn btn-primary" id="purchase" onclick="Product.Stock.purchase()">
                     进货
                 </button>
             </div>
