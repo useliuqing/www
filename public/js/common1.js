@@ -7,32 +7,27 @@ var Product;
             window.location.href = "/setViewableInfo";
         };
         Stock.ajaxLoad = function (targetData) {
-            if (!this.xmlhttp) {
-                this.setXmlHttp();
-            }
-            this.xmlhttp.open("GET", 'stock?load=' + targetData + "&t=" + Math.random(), true);
-            this.xmlhttp.send();
+            var _this = this;
+            var jSetting = {
+                type: "GET",
+                cache: false,
+                url: 'stock?load=' + targetData,
+                dataType: 'json',
+                success: function (returned_data) {
+                    _this.loadFormFromJson(returned_data);
+                },
+                error: function () {
+                    alert('网络错误');
+                }
+            };
+            $.ajax(jSetting);
         };
         Stock.purchase = function () {
             window.open("/purchase", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400");
         };
-        Stock.setXmlHttp = function () {
-            if (window.XMLHttpRequest) {
-                this.xmlhttp = new XMLHttpRequest();
-            }
-            else if (window.ActiveXObject) {
-                this.xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
-            }
-            if (this.xmlhttp != null) {
-                this.xmlhttp.onreadystatechange = this.onResponse;
-            }
+        Stock.loadFormFromJson = function (data) {
         };
-        Stock.onResponse = function () {
-            if (this.xmlhttp.readyState != 4)
-                return;
-            if (this.xmlhttp.status != 200) {
-                //读取数据出错
-            }
+        Stock.sendErrMsg = function () {
         };
         return Stock;
     }());

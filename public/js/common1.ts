@@ -1,6 +1,5 @@
+import {SupplierInfo,KindInfo} from "../../lib/datainfo";
 namespace Product {
-    import SupplierInfo = DataInfo.SupplierInfo;
-    import KindInfo = DataInfo.KindInfo;
     export class Stock {
         static xmlhttp: XMLHttpRequest;
         static setViewableInfo(): void {
@@ -53,11 +52,11 @@ namespace Product {
                 let jKinds: JQuery = jdiv.find('.selectKinds');
                 let jSuppliers: JQuery = jdiv.find('.selectSuppliers');
                 data.kinds.forEach((kind: KindInfo) => {
-                    jKinds.append('<option value="' + kind.kindID + '">' + kind.name + '</option>');
+                    jKinds.append('<option value="' + kind.kindId + '">' + kind.name + '</option>');
                 });
                 //jKinds.append('<option onclick=addKinds()><span class="glyphicon glyphicon-plus"></span></option>')
                 data.suppliers.forEach((supplier: SupplierInfo) => {
-                    jSuppliers.append('<option value="' + supplier.supplierID + '">' + supplier.name + '</option>')
+                    jSuppliers.append('<option value="' + supplier.supplierId + '">' + supplier.name + '</option>')
                 })
                 //jSuppliers.append('<option onclick=addSuppliers()><span class="glyphicon glyphicon-plus"></span></option>');
                 this.jtrClone = jdiv.find('tbody').children('tr').clone();

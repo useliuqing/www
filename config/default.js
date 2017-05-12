@@ -5,5 +5,6 @@ module.exports = {
     key: 'myblog',
     maxAge: 5*60*1000
   },
-  mongodb: 'mongodb://127.0.0.1:27017/myblog'
+  mongodb: 'mongodb://127.0.0.1:27017/myblog',
+  logFile : './log/serverlog.log'
 };

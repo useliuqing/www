@@ -4,27 +4,26 @@ import { IItem } from '../interfaces/DataInterface';
 interface IItemDocument extends IItem, Document { }
 
 interface IUserModel extends Model<IItemDocument> {
-    getItemWithMaxId(): Promise<IItemDocument>;
+    findItemWithMaxId(userName: string): Promise<IItemDocument>;
 }
 
 
 //商品属性相关////////////////////////////////////////////////////////////////////////////////
 let ItemSchema = new Schema({
-    itemId: Number,
-    name: String,
-    kind: Number,
-    price: Number,
-    supplier: String,
-    procurementPrice: Number,
-    producingArea: String,
-    lastUpdateTime: String,
-    userName: String,
-    picture: String
+    _itemId: Number,
+    _name: String,
+    _kind: Number,
+    _price: Number,
+    _supplier: String,
+    _procurementPrice: Number,
+    _producingArea: String,
+    _lastUpdateTime: String,
+    _userName: String,
+    _picture: String
 });
 
-ItemSchema.statics.getItemWithMaxId = function (userName: string,callback:Function) : Promise<IItemDocument> {
-    return this.find({ userName: userName }).sort({ itemId: -1 }).limit(1).exec(callback);
+ItemSchema.statics.findItemWithMaxId = function (userName: string): Promise<IItemDocument> {
+    return this.find({ userName: userName }).sort({ itemId: -1 }).limit(1).exec();
 }
 
-export let ItemModel = <IUserModel>model('items',ItemSchema);
-
+export default <IUserModel>model('items', ItemSchema);

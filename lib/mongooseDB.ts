@@ -1,5 +1,3 @@
-import UserInfo = DataInfo.UserInfo;
-import Gender = DataInfo.Gender;
 import { config } from 'config-lite';
 import { Document, Schema, connect, Model, model } from 'mongoose';
 import * as moment from 'moment';
@@ -26,7 +24,7 @@ let userSchema = new Schema({
     name: String,
     password: String,
     avater: String,
-    gender: Gender,
+    gender: ,
     bio: String,
 });
 
